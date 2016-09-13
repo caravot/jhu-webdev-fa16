@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>02</td>
-                    <td><a href="/cravott1/modules/two/">IDE, HTML: Crash Course</a></td>
+                    <td><a href="modules/two/">IDE, HTML: Crash Course</a></td>
                 </tr>
                 <tr>
                     <td>03</td>

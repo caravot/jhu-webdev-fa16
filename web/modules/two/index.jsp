@@ -1,15 +1,28 @@
 <%@ include file="/header.jsp" %>
 
-<form action="index.jsp" class="form-horizontal">
-    <div class="container">
-        <div align="center">
-            <img src="/cravott1/assets/images/jhu.logo.small.horizontal.blue.png" alt="JHU Logo: Small" width="500">
-            <h1>Johns Hopkins Annual
-                Software
-                Development
-                Seminar</h1>
+<div class="container">
+    <div class="row text-center">
+        <img src="${pageContext.request.contextPath}/assets/images/jhu.logo.small.horizontal.blue.png"
+             alt="JHU Logo: Small" width="400">
+        <h3>1st Annual Software Development Seminar</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-6">
+                <p>December 12-13, 2016</p>
+            </div>
+            <div class="col-md-6">
+                <address>
+                    JHU APL location<br/>
+                    7490 Sanner Rd<br/>
+                    Laurel, MD 20723<br/>
+                    Phone: (123) 456-7890<br/>
+                    <a href="mailto:#">sw-dev-seminar@jhu.edu</a>
+                </address>
+            </div>
         </div>
-
+    </div>
+    <form action="index.jsp" class="form-horizontal top15">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
@@ -147,79 +160,24 @@
             <div class="col-sm-10">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="payment" value="check">Check (make checks to JHU:Seminar)
+                        <input type="radio" name="payment" value="check">Check (make checks to JHU Seminar)
                     </label>
                 </div>
                 <div class="radio">
                     <label><input type="radio" name="payment" value="purchase-order">Purchase Order</label>
                 </div>
-            </div>
-            <div class="col-sm-10 col-md-offset-2">
                 <div class="radio">
-                    <label class="radio-inline"><input type="radio" name="payment" value="visa">
-                        Visa
-                    </label>
-                    <label class="radio-inline"><input type="radio" name="payment" value="mastercard">
-                        Mastercard
-                    </label>
-                    <label class="radio-inline"><input type="radio" name="payment" value="american-express">
-                        American Express
-                    </label>
-                </div>
-            </div>
-            <div class="col-sm-10 col-md-offset-2">
-                <div class="form-group">
-                    <label for="full-name" class="col-sm-2 control-label">Name on Card</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="full-name" id="full-name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="card-number" class="col-sm-2 control-label">Card Number</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="card-number" id="card-number">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exp-date" class="col-sm-2 control-label">Exiration Date</label>
-                    <div class="col-sm-3">
-                        <select class="form-control" name="exp-date-month" id="exp-date">
-                            <option value="1">(01) January</option>
-                            <option value="2">(02) February</option>
-                            <option value="3">(03) March</option>
-                            <option value="4">(04) April</option>
-                            <option value="5">(05) May</option>
-                            <option value="6">(06) June</option>
-                            <option value="7">(07) July</option>
-                            <option value="8">(08) August</option>
-                            <option value="9" selected>(09) September</option>
-                            <option value="10">(10) October</option>
-                            <option value="11">(11) November</option>
-                            <option value="12">(12) December</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <select class="form-control" name="exp-date-year">
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                        </select>
-                    </div>
-                    <label for="exp-date-year" class="col-sm-1 control-label">CVV#</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" name="exp-date-year" id="exp-date-year">
-                    </div>
+                    <label><input type="radio" name="payment" value="credit-card">Credit Card</label>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Compute Seminar Costs</button>
-            <button type="reset" class="btn btn-default">Reset</button>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Compute Seminar Costs</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
 
 <%@ include file="/footer.jsp" %>
