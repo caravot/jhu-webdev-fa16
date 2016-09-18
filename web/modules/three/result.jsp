@@ -1,12 +1,24 @@
 <%@ include file="/header.jsp" %>
 
+<%-- Gloval variables for ease of use --%>
 <%
     String[] courses = request.getParameterValues("courses");
     String[] fees = request.getParameterValues("fees");
     String empStatus = request.getParameter("empStatus");
-    int courseCost = 0;
-    int totalCost = 0;
+%>
 
+<%-- Cost per course based on status --%>
+<%!
+    int courseCost = 0;
+%>
+
+<%-- Total cost owed --%>
+<%!
+    int totalCost = 0;
+%>
+
+<%-- Determine cost per course based on user's status --%>
+<%
     if (empStatus.equals("jhu-employee")) {
         courseCost = 850;
     } else if (empStatus.equals("jhu-student")) {
@@ -56,6 +68,7 @@
                 Phone: <%= request.getParameter("phone") %>
             </address>
             </p>
+            <%-- Output an itemized list of costs/fees owed by the user --%>
             <h3>Itemized Costs</h3>
             <table class="table">
                 <thead>
@@ -66,20 +79,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%-- Print courses selected; Add each course to the total bill --%>
                 <%
                     for (int i = 0; i < courses.length; i++) {
                         totalCost += courseCost;
                 %>
                 <tr>
                     <td>Course</td>
-                    <td><%= courses[i] %>
-                    </td>
-                    <td>$<%= courseCost %>
-                    </td>
+                    <td><%= courses[i] %></td>
+                    <td>$<%= courseCost %></td>
                 </tr>
                 <%
                     }
                 %>
+                <%-- Print extra fees; Add each fee to the total bill --%>
                 <%
                     for (int i = 0; i < fees.length; i++) {
                         String fee = fees[i];
@@ -87,8 +100,7 @@
                 %>
                 <tr>
                     <td>Fee</td>
-                    <td><%= fee %>
-                    </td>
+                    <td><%= fee %></td>
                     <td>
                         <%
                             if (fee.equals("hotel")) {
@@ -109,8 +121,7 @@
                 <tfoot>
                 <tr>
                     <td colspan="2" align="right">Total billing amount:</td>
-                    <td>$<%= totalCost %>
-                    </td>
+                    <td>$<%= totalCost %></td>
                 </tr>
                 </tfoot>
             </table>
