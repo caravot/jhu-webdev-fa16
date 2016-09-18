@@ -2,14 +2,20 @@
 
 <div class="container">
     <div class="row text-center">
-        <img src="${pageContext.request.contextPath}/assets/images/jhu.logo.small.horizontal.blue.png"
-             alt="JHU Logo: Small" width="400">
-        <h3>1st Annual Software Development Seminar</h3>
+        <div class="col-md-offset-1 col-md-10">
+            <img src="${pageContext.request.contextPath}/assets/images/jhu.logo.small.horizontal.blue.png"
+                 alt="JHU Logo: Small" width="400">
+            <h1>1st Annual Software Development Seminar</h1>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <div class="col-md-6">
-                <p>December 12-13, 2016</p>
+                <p>
+                    December 12-13, 2016<br />
+                    08:00 AM - 05:00 PM<br />
+                    Lunch 12:00 PM - 01:00 PM
+                </p>
             </div>
             <div class="col-md-6">
                 <address>
@@ -25,47 +31,47 @@
     <form action="index.jsp" class="form-horizontal top15">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <input type="password" class="form-control" name="name" id="name">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <input type="email" class="form-control" name="email" id="email">
             </div>
         </div>
         <div class="form-group">
             <label for="address" class="col-sm-2 control-label">Address</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <input type="text" class="form-control" name="address" id="address">
             </div>
         </div>
         <div class="form-group">
             <label for="city" class="col-sm-2 control-label">City</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <input type="text" class="form-control" name="city" id="city">
             </div>
         </div>
         <div class="form-group">
             <label for="state" class="col-sm-2 control-label">State</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" name="state" id="state">
+                <input type="text" class="form-control" name="state" id="state" placeholder="Maryland">
             </div>
             <label for="zipcode" class="col-sm-2 control-label">Zipcode</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" name="zipcode" id="zipcode">
+                <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="XXXXX">
             </div>
         </div>
         <div class="form-group">
             <label for="phone" class="col-sm-2 control-label">Phone</label>
-            <div class="col-sm-10">
-                <input type="phone" class="form-control" name="phone" id="phone">
+            <div class="col-sm-9">
+                <input type="phone" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX">
             </div>
         </div>
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Courses</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <select multiple class="form-control" name="courses">
                     <option value="A1">A1 - J2EE Design Patterns</option>
                     <option value="A3">A3 - Service Oriented Architectures</option>
@@ -74,11 +80,12 @@
                     <option value="A5">A5 - Web Services Security</option>
                     <option value="A6">A6 - Secure Messaging</option>
                 </select>
+                <p class="help-block">Hold Shift to select multiple courses.</p>
             </div>
         </div>
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Employment Status</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="radio">
                     <label class="radio-inline">
                         <input type="radio" name="empStatus" id="empStatus1" value="jhu-employee">
@@ -101,7 +108,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Shirt Size</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="radio">
                     <label class="radio-inline">
                         <input type="radio" name="shirt-size" id="small" value="small">
@@ -128,7 +135,7 @@
         </div>
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Additional Fees/Charges</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="fees" value="hotel">
@@ -157,7 +164,7 @@
         </div>
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Payment Method</label>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <div class="radio">
                     <label>
                         <input type="radio" name="payment" value="check">Check (make checks to JHU Seminar)
@@ -172,7 +179,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-2 col-sm-9">
                 <button type="submit" class="btn btn-default">Compute Seminar Costs</button>
                 <button type="reset" class="btn btn-default">Reset</button>
             </div>
