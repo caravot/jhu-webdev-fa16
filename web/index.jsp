@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td>03</td>
-                    <td>Java Server Pages</td>
+                    <td><a href="modules/three/">Java Server Pages</a></td>
                 </tr>
                 <tr>
                     <td>04</td>
