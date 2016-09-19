@@ -1,5 +1,7 @@
 <%@ include file="/header.jsp" %>
 
+<%@page import="java.util.*"%>
+
 <%-- Gloval variables for ease of use --%>
 <%
     String[] courses = request.getParameterValues("courses");
