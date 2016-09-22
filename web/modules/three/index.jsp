@@ -22,45 +22,45 @@
             </div>
         </div>
     </div>
-    <form action="result.jsp" method="get" class="form-horizontal top15">
+    <form action="result.jsp" method="get" class="form-horizontal top15" name="mod3">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
-                <input type="name" class="form-control" name="name" id="name">
+                <input type="name" class="form-control" name="name" id="name" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="address" class="col-sm-2 control-label">Address</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="address" id="address">
+                <input type="text" class="form-control" name="address" id="address" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="city" class="col-sm-2 control-label">City</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="city" id="city">
+                <input type="text" class="form-control" name="city" id="city" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="state" class="col-sm-2 control-label">State</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" name="state" id="state">
+                <input type="text" class="form-control" name="state" id="state" value="">
             </div>
             <label for="zipcode" class="col-sm-2 control-label">Zipcode</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" name="zipcode" id="zipcode">
+                <input type="text" class="form-control" name="zipcode" id="zipcode" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="phone" class="col-sm-2 control-label">Phone</label>
             <div class="col-sm-10">
-                <input type="phone" class="form-control" name="phone" id="phone">
+                <input type="phone" class="form-control" name="phone" id="phone" value="">
             </div>
         </div>
         <div class="form-group">

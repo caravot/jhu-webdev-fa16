@@ -18,6 +18,7 @@
     <!-- JavaScript Files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/cravott1/assets/js/main.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -41,3 +42,13 @@
         </div>
     </div>
 </nav>
+
+<div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" title="Dismiss">
+        &times;
+    </button>
+
+    <p>The below errors were found:</p>
+
+    <ul class="msg"></ul>
+</div>
