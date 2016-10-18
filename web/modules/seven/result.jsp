@@ -2,11 +2,19 @@
 
 <%@page import="java.util.*"%>
 
-<%-- Gloval variables for ease of use --%>
+<jsp:useBean id="user" type="classes.user.User" scope="session" />
+
+
+
+<%-- Gloval variables for ease of use--%>
 <%
-    String[] courses = request.getParameterValues("courses");
-    String[] fees = request.getParameterValues("fees");
-    String empStatus = request.getParameter("empStatus");
+
+
+    String name = user.getName();
+    String email = user.getEmail();
+    String[] courses = user.getCourses();
+    String[] fees = user.getFees();
+    String empStatus = user.getEmpStatus();
 %>
 
 <%-- Cost per course based on status --%>
@@ -19,7 +27,7 @@
     private int totalCost = 0;
 %>
 
-<%-- Determine cost per course based on user's status --%>
+<%-- Determine cost per course based on user's status--%>
 <%
     switch (empStatus) {
         case "jhu-employee":
@@ -59,19 +67,9 @@
     <div class="row">
         <div class="col-md-offset-2 col-md-10">
             <h3>Thanks!</h3>
-            <p><%= request.getParameter("name") %> you are registered as a <%= empStatus %>.</p>
-            <p>Your e-mail confirmation will be sent to <%= request.getParameter("email") %>. You should receive
-                your tickets, along with your shirt size of <%= request.getParameter("shirt-size")%> in the mail at the
-                address
-                provided below.</p>
-            <p>Please remember that your selected payment option was <%= request.getParameter("payment") %>. You
-                will have until December 5, 2016 to pay your bill.</p>
-            <address>
-                <%= request.getParameter("address") %><br/>
-                <%= request.getParameter("city") %>, <%= request.getParameter("state") %> <%=
-            request.getParameter("zipcode") %><br/>
-                Phone: <%= request.getParameter("phone") %>
-            </address>
+            <p><%= name %> you are registered as a <%= empStatus %>.</p>
+            <p>Your e-mail confirmation will be sent to <%= email %>. You should receive
+                your tickets in the mail in the next two weeks.</p>
 
             <%-- Output an itemized list of costs/fees owed by the user --%>
             <h3>Itemized Costs</h3>
@@ -99,8 +97,10 @@
                 %>
                 <%-- Print extra fees; Add each fee to the total bill --%>
                 <%
+                    String fee = "";
+
                     for (int i = 0; i < fees.length; i++) {
-                        String fee = fees[i];
+                        fee = fees[i];
                         int feeCost = 0;
                 %>
                 <tr>
