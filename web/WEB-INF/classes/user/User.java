@@ -2,13 +2,16 @@ package classes.user;
 
 import java.io.Serializable;
 
+// save user registration
 public class User implements Serializable {
+    // user variables
     private String name;
     private String email;
     private String empStatus;
     private String[] courses;
     private String[] fees;
 
+    // default user initialization
     public User() {
         name = "";
         email = "";
@@ -17,32 +20,34 @@ public class User implements Serializable {
         fees = new String[0];
     }
 
-    public User(String n, String e, String es, String[] c, String[] f) {
-        name = n;
-        email = e;
-        empStatus = es;
-        courses = c;
-        fees = f;
-    }
-
+    // set user variable functions
     public void setName(String n) {
         name = n;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setEmail(String e) {
         email = e;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmpStatus(String es) {
         empStatus = es;
+    }
+
+    public void setCourses(String[] c) {
+        courses = c;
+    }
+
+    public void setFees(String[] f) {
+        fees = f;
+    }
+
+    // get user variable functions
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getEmpStatus() {
@@ -53,18 +58,11 @@ public class User implements Serializable {
         return courses;
     }
 
-    public void setCourses(String[] c) {
-        courses = c;
-    }
-
     public String[] getFees() {
         return fees;
     }
 
-    public void setFees(String[] f) {
-        fees = f;
-    }
-
+    // determine if a fee is listed in fees selected by user
     public boolean findFee(String f) {
         for (String fee: fees) {
             if (fee.equals(f)) {
@@ -75,7 +73,7 @@ public class User implements Serializable {
         return false;
     }
 
-
+    // determine if a fee is listed in courses selected by user
     public boolean findCourse(String c) {
         for (String course: courses) {
             if (course.equals(c)) {
