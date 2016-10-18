@@ -14,6 +14,6 @@
     <!-- the mapping for the servlets -->
     <servlet-mapping>
         <servlet-name>addRegistrant</servlet-name>
-        <url-pattern>/modules/four/addSeminarRegister</url-pattern>
+        <url-pattern>/cravott1/modules/seven/addSeminarRegister</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>07</td>
-                    <td>Java Beans</td>
+                    <td><a href="modules/seven/">Java Beans</a></td>
                 </tr>
                 <tr>
                     <td>08</td>
