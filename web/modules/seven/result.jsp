@@ -4,12 +4,8 @@
 
 <jsp:useBean id="user" type="classes.user.User" scope="session" />
 
-
-
 <%-- Gloval variables for ease of use--%>
 <%
-
-
     String name = user.getName();
     String email = user.getEmail();
     String[] courses = user.getCourses();
@@ -127,6 +123,12 @@
                 <tr>
                     <td colspan="2" align="right">Total billing amount:</td>
                     <td>$<%= totalCost %></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <a href="index.jsp" title="Edit Information"><button class="btn btn-default">Edit Information/Add More Courses</button></a>
+                        <button class="btn btn-default">Confirm Registration</button>
+                    </td>
                 </tr>
                 </tfoot>
             </table>

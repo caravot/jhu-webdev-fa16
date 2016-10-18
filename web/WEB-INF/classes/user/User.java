@@ -13,8 +13,8 @@ public class User implements Serializable {
         name = "";
         email = "";
         empStatus = "";
-        courses = new String[1];
-        fees = new String[1];
+        courses = new String[0];
+        fees = new String[0];
     }
 
     public User(String n, String e, String es, String[] c, String[] f) {
@@ -63,5 +63,26 @@ public class User implements Serializable {
 
     public void setFees(String[] f) {
         fees = f;
+    }
+
+    public boolean findFee(String f) {
+        for (String fee: fees) {
+            if (fee.equals(f)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public boolean findCourse(String c) {
+        for (String course: courses) {
+            if (course.equals(c)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

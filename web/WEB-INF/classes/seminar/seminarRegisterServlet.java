@@ -28,10 +28,6 @@ public class seminarRegisterServlet extends HttpServlet {
         if (name == null || email == null || empStatus == null || courses == null || fees == null ) {
             request.setAttribute("message", message);
             url = "/modules/seven/index.jsp";
-
-            // forward request and response to the view
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
         } else {
             // set user variables
             User user = new User();
@@ -41,12 +37,16 @@ public class seminarRegisterServlet extends HttpServlet {
             user.setCourses(courses);
             user.setFees(fees);
 
-            url = "/cravott1/modules/seven/result.jsp";
+            // set redirect url
+            url = "/modules/seven/result.jsp";
 
             // store the user object in the session
             request.getSession().setAttribute("user", user);
-            response.sendRedirect(url);
         }
+
+        // forward request and response to the view
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // forward all get actions to the post method
