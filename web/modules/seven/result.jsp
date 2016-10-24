@@ -25,16 +25,12 @@
 
 <%-- Determine cost per course based on user's status--%>
 <%
-    switch (empStatus) {
-        case "jhu-employee":
-            courseCost = 850;
-            break;
-        case "jhu-student":
-            courseCost = 1000;
-            break;
-        case "other":
-            courseCost = 1350;
-            break;
+    if (empStatus == "jhu-employee") {
+        courseCost = 850;
+    } else if (empStatus == "jhu-student") {
+        courseCost = 1000;
+    } else if (empStatus == "other") {
+        courseCost = 1350;
     }
 %>
 
