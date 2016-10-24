@@ -20,15 +20,15 @@
                 </tr>
                 <tr>
                     <td>02</td>
-                    <td><a href="/cravott1/modules/one/">IDE, HTML: Crash Course</a></td>
+                    <td><a href="modules/two/">IDE, HTML: Crash Course</a></td>
                 </tr>
                 <tr>
                     <td>03</td>
-                    <td>Java Server Pages</td>
+                    <td><a href="modules/three/">Java Server Pages</a></td>
                 </tr>
                 <tr>
                     <td>04</td>
-                    <td>Servlets</td>
+                    <td><a href="modules/four/">Servlets</a></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>07</td>
-                    <td>Java Beans</td>
+                    <td><a href="modules/seven/">Java Beans</a></td>
                 </tr>
                 <tr>
                     <td>08</td>
