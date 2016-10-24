@@ -19,12 +19,11 @@ public class seminarRegisterServlet extends HttpServlet {
         String[] fees = request.getParameterValues("fees");
 
         // common return values
-        String message = "";
         String url = "";
 
         // verify that the user has filled in all form values
         if (name == null || email == null || empStatus == null || courses == null || fees == null ) {
-            request.setAttribute("message", message);
+            request.setAttribute("message", "Please fill out all form fields below.");
             url = "/modules/four/index.jsp";
         } else {
             url = "/modules/four/result.jsp";

@@ -21,16 +21,12 @@
 
 <%-- Determine cost per course based on user's status --%>
 <%
-    switch (empStatus) {
-        case "jhu-employee":
-            courseCost = 850;
-            break;
-        case "jhu-student":
-            courseCost = 1000;
-            break;
-        case "other":
-            courseCost = 1350;
-            break;
+    if (empStatus == "jhu-employee") {
+        courseCost = 850;
+    } else if (empStatus == "jhu-student") {
+        courseCost = 1000;
+    } else {
+        courseCost = 1350;
     }
 %>
 
@@ -66,12 +62,6 @@
                 provided below.</p>
             <p>Please remember that your selected payment option was <%= request.getParameter("payment") %>. You
                 will have until December 5, 2016 to pay your bill.</p>
-            <address>
-                <%= request.getParameter("address") %><br/>
-                <%= request.getParameter("city") %>, <%= request.getParameter("state") %> <%=
-            request.getParameter("zipcode") %><br/>
-                Phone: <%= request.getParameter("phone") %>
-            </address>
 
             <%-- Output an itemized list of costs/fees owed by the user --%>
             <h3>Itemized Costs</h3>
