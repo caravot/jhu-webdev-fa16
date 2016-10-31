@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td>09</td>
-                    <td>JavaMail SSL and Secure Connection</td>
+                    <td><a href="modules/nine/">JavaMail SSL and Secure Connection</a></td>
                 </tr>
                 <tr>
                     <td>10</td>
