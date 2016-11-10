@@ -1,6 +1,7 @@
 package classes.user;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 // save user registration
 public class User implements Serializable {
@@ -60,6 +61,14 @@ public class User implements Serializable {
 
     public String[] getFees() {
         return fees;
+    }
+
+    public String getCoursesToList() {
+        return (Arrays.toString(courses)).replace("[", "").replace("]", "").replace(", ", ",");
+    }
+    public String getFeesToList() {
+        return (Arrays.toString(fees)).replace("[", "").replace("]", "").replace(", ", ",");
+        //.replace("[", "").replace("]", "").replace(", ", ",");
     }
 
     // determine if a fee is listed in fees selected by user

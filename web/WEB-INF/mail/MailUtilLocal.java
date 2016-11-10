@@ -5,10 +5,8 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class MailUtilLocal {
-    public static void sendMail(String to, String from,
-        String subject, String body, boolean bodyIsHTML)
+    public static void sendMail(String to, String from, String subject, String body, boolean bodyIsHTML)
         throws MessagingException {
-
         // 1 - get a mail session
         Properties props = new Properties();
 
@@ -22,6 +20,7 @@ public class MailUtilLocal {
         // 2 - create a message
         Message message = new MimeMessage(session);
         message.setSubject(subject);
+
         if (bodyIsHTML) {
             message.setContent(body, "text/html");
         } else {

@@ -1,12 +1,14 @@
 package classes.seminar;
 
 import java.io.*;
+import java.util.Arrays;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.mail.*;
 
 import classes.user.User;
 import mail.MailUtilGmail;
+import mail.MailUtilLocal;
 
 // process form for seminar registration
 public class seminarRegisterServlet extends HttpServlet {
@@ -24,7 +26,7 @@ public class seminarRegisterServlet extends HttpServlet {
 
         // get path that we came from
         String pathInfo = request.getServletPath();
-        System.out.println("hello" + pathInfo);
+
         // common return values
         String message = "";
         String url = "/modules/nine/index.jsp";
@@ -34,7 +36,6 @@ public class seminarRegisterServlet extends HttpServlet {
             if (name == null || email == null || empStatus == null || courses == null || fees == null ) {
                 request.setAttribute("message", message);
             } else {
-                System.out.println("adding");
                 // set user variables
                 User user = new User();
                 user.setName(name);
@@ -50,14 +51,22 @@ public class seminarRegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("user", user);
             }
         } else if (pathInfo != null && pathInfo.contains("confirm")) {
-            System.out.println("confirming");
-            String to = "carrie.peary@gmail.com";
-            String from = "carrie.peary@gmail.com";
-            String subject = "Thanks for your registration";
-            String body = "Thanks for your registration";
+            User user = (User) request.getSession().getAttribute("user");
 
+            String to = "carrie.peary@gmail.com";
+            String from = user.getEmail();
+            String subject = "Registration Information for JHU 1st Annual Software Development Seminar";
+            String body = "Thanks for your registration to the JHU 1st Annual Software Development Seminar.\n\n"
+                    + "You registered with the following details: \n\n"
+                    + " - Name: " + user.getName() + "\n"
+                    + " - Employee Status: " + user.getEmpStatus() + "\n"
+                    + " - Courses: " + user.getCoursesToList() + "\n"
+                    + " - Fees: " + user.getFeesToList() + "\n\n"
+                    + "If you have any questions please contact us at sw-dev-seminar@jhu.edu.";
             try {
-                MailUtilGmail.sendMail(to, from, subject, body, false);
+                MailUtilLocal.sendMail(to, from, subject, body, false);
+
+                url = "/modules/nine/thanks.jsp";
             } catch (MessagingException e) {
                 String errorMessage = "ERROR: Unable to send email. ERROR MESSAGE: " + e.getMessage();
                 request.setAttribute("errorMessage", errorMessage);
@@ -70,9 +79,9 @@ public class seminarRegisterServlet extends HttpServlet {
                                 + "FROM: " + from + "\n"
                                 + "SUBJECT: " + subject + "\n\n"
                                 + body + "\n\n");
-            }
 
-            url = "/modules/nine/thanks.jsp";
+                url = "/modules/nine/index.jsp";
+            }
         }
 
         // forward request and response to the view

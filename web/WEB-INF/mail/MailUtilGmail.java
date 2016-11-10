@@ -19,11 +19,11 @@ public class MailUtilGmail {
 		props.put("mail.smtp.port", "587");
 
 		Session session = Session.getInstance(props,
-		  new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		  });
+				new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				});
 
 		try {
 			Message message = new MimeMessage(session);
