@@ -25,9 +25,9 @@
 
 <%-- Determine cost per course based on user's status--%>
 <%
-    if (empStatus == "jhu-employee") {
+    if (empStatus.equals("jhu-employee")) {
         courseCost = 850;
-    } else if (empStatus == "jhu-student") {
+    } else if (empStatus.equals("jhu-student")) {
         courseCost = 1000;
     } else if (empStatus == "other") {
         courseCost = 1350;
@@ -123,8 +123,8 @@
                         <a href="index.jsp" title="Edit Information">
                             <button class="btn btn-default">Edit Information/Add More Courses</button>
                         </a>
-                        <a href="confirmRegister" title="Confirm Registration">
-                            <button class="btn btn-default">Confirm Registration</button>
+                        <a href="payment.jsp" title="Submit Payment">
+                            <button class="btn btn-default">Submit Payment</button>
                         </a>
                     </td>
                 </tr>

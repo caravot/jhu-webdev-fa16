@@ -14,7 +14,17 @@
     <!-- the mapping for the servlets -->
     <servlet-mapping>
         <servlet-name>addRegistrant</servlet-name>
-        <url-pattern>/modules/nine/addSeminarRegister</url-pattern>
-        <url-pattern>/modules/nine/confirmRegister</url-pattern>
+        <url-pattern>/modules/ten/addSeminarRegister</url-pattern>
+        <url-pattern>/modules/ten/confirmRegister</url-pattern>
     </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>secure</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 </web-app>

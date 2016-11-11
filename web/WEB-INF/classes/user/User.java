@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String empStatus;
     private String[] courses;
     private String[] fees;
+    private int totalCost;
 
     // default user initialization
     public User() {
@@ -19,6 +20,7 @@ public class User implements Serializable {
         empStatus = "";
         courses = new String[0];
         fees = new String[0];
+        totalCost = 0;
     }
 
     // set user variable functions
@@ -36,11 +38,19 @@ public class User implements Serializable {
 
     public void setCourses(String[] c) {
         courses = c;
+
+        // update total cost
+        setTotalCost();
     }
 
     public void setFees(String[] f) {
         fees = f;
+
+        // update total cost
+        setTotalCost();
     }
+
+    public void setTotalCost(int tc) { totalCost = tc; }
 
     // get user variable functions
     public String getName() {
@@ -63,17 +73,19 @@ public class User implements Serializable {
         return fees;
     }
 
+    public int getTotalCost() { return totalCost; }
+
     public String getCoursesToList() {
         return (Arrays.toString(courses)).replace("[", "").replace("]", "").replace(", ", ",");
     }
+
     public String getFeesToList() {
         return (Arrays.toString(fees)).replace("[", "").replace("]", "").replace(", ", ",");
-        //.replace("[", "").replace("]", "").replace(", ", ",");
     }
 
     // determine if a fee is listed in fees selected by user
     public boolean findFee(String f) {
-        for (String fee: fees) {
+        for (String fee : fees) {
             if (fee.equals(f)) {
                 return true;
             }
@@ -84,12 +96,39 @@ public class User implements Serializable {
 
     // determine if a fee is listed in courses selected by user
     public boolean findCourse(String c) {
-        for (String course: courses) {
+        for (String course : courses) {
             if (course.equals(c)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public void setTotalCost() {
+        int courseCost = 0;
+        int total = 0;
+
+        if (empStatus.equals("jhu-employee")) {
+            courseCost = 850;
+        } else if (empStatus.equals("jhu-student")) {
+            courseCost = 1000;
+        } else if (empStatus == "other") {
+            courseCost = 1350;
+        }
+
+        for (int i = 0; i < courses.length; i++) {
+            total += courseCost;
+        }
+
+        for (int i = 0; i < fees.length; i++) {
+            if (fees[i].equals("hotel")) {
+                total += 185;
+            } else if (fees[i].equals("parking")) {
+                total += 10;
+            }
+        }
+
+        totalCost = total;
     }
 }

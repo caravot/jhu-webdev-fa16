@@ -17,23 +17,25 @@ public class seminarRegisterServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        // get parameters from the request
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String empStatus = request.getParameter("empStatus");
-        String[] courses = request.getParameterValues("courses");
-        String[] fees = request.getParameterValues("fees");
-
         // get path that we came from
         String pathInfo = request.getServletPath();
 
         // common return values
         String message = "";
-        String url = "/modules/nine/index.jsp";
+        String url = "/modules/ten/index.jsp";
 
         // verify that the user has filled in all form values
         if (pathInfo != null && pathInfo.contains("add")) {
+            // get parameters from the request
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String empStatus = request.getParameter("empStatus");
+            String[] courses = request.getParameterValues("courses");
+            String[] fees = request.getParameterValues("fees");
+
             if (name == null || email == null || empStatus == null || courses == null || fees == null ) {
+                message = "You must fill out all sections of the form.";
+
                 request.setAttribute("message", message);
             } else {
                 // set user variables
@@ -45,7 +47,7 @@ public class seminarRegisterServlet extends HttpServlet {
                 user.setFees(fees);
 
                 // set redirect url
-                url = "/modules/nine/result.jsp";
+                url = "/modules/ten/result.jsp";
 
                 // store the user object in the session
                 request.getSession().setAttribute("user", user);
@@ -53,34 +55,48 @@ public class seminarRegisterServlet extends HttpServlet {
         } else if (pathInfo != null && pathInfo.contains("confirm")) {
             User user = (User) request.getSession().getAttribute("user");
 
-            String to = "carrie.peary@gmail.com";
-            String from = user.getEmail();
-            String subject = "Registration Information for JHU 1st Annual Software Development Seminar";
-            String body = "Thanks for your registration to the JHU 1st Annual Software Development Seminar.\n\n"
-                    + "You registered with the following details: \n\n"
-                    + " - Name: " + user.getName() + "\n"
-                    + " - Employee Status: " + user.getEmpStatus() + "\n"
-                    + " - Courses: " + user.getCoursesToList() + "\n"
-                    + " - Fees: " + user.getFeesToList() + "\n\n"
-                    + "If you have any questions please contact us at sw-dev-seminar@jhu.edu.";
-            try {
-                MailUtilLocal.sendMail(to, from, subject, body, false);
+            // get parameters from the request
+            String cardType = request.getParameter("card-type");
+            String cardNumber = request.getParameter("card-number");
+            String cardDate = request.getParameter("card-type");
 
-                url = "/modules/nine/thanks.jsp";
-            } catch (MessagingException e) {
-                String errorMessage = "ERROR: Unable to send email. ERROR MESSAGE: " + e.getMessage();
-                request.setAttribute("errorMessage", errorMessage);
+            if (cardType == null || cardNumber.length() == 0 || cardDate.length() == 0) {
+                message = "You must fill out all sections of the form.";
 
-                System.out.println(
-                        "Unable to send email. \n"
-                                + "Here is the email you tried to send: \n"
-                                + "=====================================\n"
-                                + "TO: " + to + "\n"
-                                + "FROM: " + from + "\n"
-                                + "SUBJECT: " + subject + "\n\n"
-                                + body + "\n\n");
+                request.setAttribute("message", message);
 
-                url = "/modules/nine/index.jsp";
+                // set redirect url
+                url = "/modules/ten/payment.jsp";
+            } else {
+                String to = user.getEmail();
+                String from = "carrie.peary@gmail.com";
+                String subject = "Registration Information for JHU 1st Annual Software Development Seminar";
+                String body = "Thanks for your registration to the JHU 1st Annual Software Development Seminar.\n\n"
+                        + "You registered with the following details: \n\n"
+                        + " - Name: " + user.getName() + "\n"
+                        + " - Employee Status: " + user.getEmpStatus() + "\n"
+                        + " - Courses: " + user.getCoursesToList() + "\n"
+                        + " - Fees: " + user.getFeesToList() + "\n\n"
+                        + "If you have any questions please contact us at sw-dev-seminar@jhu.edu.";
+                try {
+                    MailUtilLocal.sendMail(to, from, subject, body, false);
+
+                    url = "/modules/ten/thanks.jsp";
+                } catch (MessagingException e) {
+                    String errorMessage = "ERROR: Unable to send email. ERROR MESSAGE: " + e.getMessage();
+                    request.setAttribute("errorMessage", errorMessage);
+
+                    System.out.println(
+                            "Unable to send email. \n"
+                                    + "Here is the email you tried to send: \n"
+                                    + "=====================================\n"
+                                    + "TO: " + to + "\n"
+                                    + "FROM: " + from + "\n"
+                                    + "SUBJECT: " + subject + "\n\n"
+                                    + body + "\n\n");
+
+                    url = "/modules/ten/index.jsp";
+                }
             }
         }
 

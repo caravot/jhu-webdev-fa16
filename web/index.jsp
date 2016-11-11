@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td>10</td>
-                    <td>Custom JSPs</td>
+                    <td><a href="modules/ten/">Custom JSPs</a></td>
                 </tr>
                 <tr>
                     <td>11</td>

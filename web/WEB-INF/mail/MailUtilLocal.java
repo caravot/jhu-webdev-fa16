@@ -15,7 +15,7 @@ public class MailUtilLocal {
         props.put("mail.smtp.port", 25);
 
         Session session = Session.getDefaultInstance(props);
-        session.setDebug(true);
+        session.setDebug(false);
 
         // 2 - create a message
         Message message = new MimeMessage(session);
